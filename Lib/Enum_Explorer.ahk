@@ -31,6 +31,14 @@ Enum_Explorer(hWnd=0, lParam=0) {
 return Array
 }
 
+PathCreateFromURL( URL )
+{
+ VarSetCapacity( fPath, Sz := 2084, 0 )
+ DllCall( "shlwapi\PathCreateFromUrl" ( A_IsUnicode ? "W" : "A" )
+         , "Str",URL, "Str",fPath, "UIntP",Sz, "UInt",0 )
+ return fPath
+}
+
 ; Example:
 ; Array := Enum_Explorer()
 ; If array.ZOrder.maxindex()
