@@ -1,0 +1,31 @@
+; v1.0.0
+Enum_Explorer(hWnd=0, lParam=0) {
+	If hWnd
+	{
+		WinGetClass, class, ahk_id %hwnd%
+		If (class = "CabinetWClass")
+		{
+			array := object(lParam)
+			If IsObject(array[hwnd])
+			{
+				array.ZOrder.insert(array[hwnd])
+			}
+		}
+	return 1
+	}
+
+	Array       := {}
+	array.ZOrder := {}
+	for Item in ComObjCreate("Shell.Application").Windows
+		If (Path := PathCreateFromURL(Item.LocationURL)) ; URL = NULL while explorer is Library...
+		{
+			Array[Item.HWND, "path"]        := path
+			Array[Item.HWND, "URL"]         := Item.LocationURL
+			Array[Item.HWND, "Prog"]        := Item.Name
+			Array[Item.HWND, "processpath"] := Item.FullName
+			Array[Item.HWND, "hwnd"]        := Item.HWND
+		}
+	Static callback := RegisterCallBack("Enum_Explorer", "", 2) ; EnumWindowsProc
+	DllCall("EnumWindows", "Ptr", callback, "uint", Object(Array))
+return Array
+}
