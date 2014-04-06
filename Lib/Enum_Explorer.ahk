@@ -1,19 +1,5 @@
 ; v1.0.0
-; -----------------------------------------
-	; Array := Enum_Explorer()
-	; If array.ZOrder.maxindex()
-	; {
-		; For i, o in Array.ZOrder
-		; {
-			; tt .= "path: " o.path "`n"
-			; tt .= "URL: " o.URL "`n"
-			; tt .= "Prog: " o.Prog "`n"
-			; tt .= "processpath: " o.processpath "`n"
-			; tt .= "hwnd: " o.hwnd "`n-------------------------`n"
-		; }
-	; }
-	; msgbox,% tt
-; -----------------------------------------
+; http://www.autohotkey.com/board/topic/105112-enum-explorer-receive-all-explorer-in-z-order/
 Enum_Explorer(hWnd=0, lParam=0) {
 	If hWnd
 	{
@@ -44,3 +30,18 @@ Enum_Explorer(hWnd=0, lParam=0) {
 	DllCall("EnumWindows", "Ptr", callback, "uint", Object(Array))
 return Array
 }
+
+; Example:
+; Array := Enum_Explorer()
+; If array.ZOrder.maxindex()
+; {
+	; For i, o in Array.ZOrder
+	; {
+		; tt .= "path: " o.path "`n"
+		; tt .= "URL: " o.URL "`n"
+		; tt .= "Prog: " o.Prog "`n"
+		; tt .= "processpath: " o.processpath "`n"
+		; tt .= "hwnd: " o.hwnd "`n-------------------------`n"
+	; }
+; }
+; msgbox,% tt
