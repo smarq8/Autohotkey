@@ -1,4 +1,19 @@
 ; v1.0.0
+; -----------------------------------------
+	; Array := Enum_Explorer()
+	; If array.ZOrder.maxindex()
+	; {
+		; For i, o in Array.ZOrder
+		; {
+			; tt .= "path: " o.path "`n"
+			; tt .= "URL: " o.URL "`n"
+			; tt .= "Prog: " o.Prog "`n"
+			; tt .= "processpath: " o.processpath "`n"
+			; tt .= "hwnd: " o.hwnd "`n-------------------------`n"
+		; }
+	; }
+	; msgbox,% tt
+; -----------------------------------------
 Enum_Explorer(hWnd=0, lParam=0) {
 	If hWnd
 	{
