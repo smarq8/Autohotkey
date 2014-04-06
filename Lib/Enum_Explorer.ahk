@@ -15,7 +15,7 @@ Enum_Explorer(hWnd=0, lParam=0) {
 	return 1
 	}
 
-	Array       := {}
+	Array        := {}
 	array.ZOrder := {}
 	for Item in ComObjCreate("Shell.Application").Windows
 		If (Path := PathCreateFromURL(Item.LocationURL)) ; URL = NULL while explorer is Library...
